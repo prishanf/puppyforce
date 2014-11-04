@@ -15,7 +15,7 @@ Requirments
 Object Design
 =============
 
-Puppy
+*Puppy*
   * Name (String 30)
   * Gender (Picklist  Male, Female)
   * Dat of Birth (Date)
@@ -28,11 +28,13 @@ Puppy
   * Address (Formula - show the full Puppy owner Address)
   * Phone (Formula - Show Phome NUmber
   * Email (Formula - Email)
-Puppy Location
+  
+*Puppy Location*
   * Capacity (Number 2)
   * Number of Puppies (Roll-Up Summary ) 
   * Number Sports Left (Formula )
-Puppy Reservation ( Jnction Object ) 
+  
+*Puppy Reservation ( Jnction Object )*
   * Puppy ( lookup Puppy Obect)
   * Puppy Location ( lookup Puppy Object)
   * Date (Date) 
