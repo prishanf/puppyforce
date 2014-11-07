@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Date__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <externalId>false</externalId>
+        <label>Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Location_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Puppy_Location__c +&quot;-&quot;+ Text(Date__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Location Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Puppy_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Puppy Location</label>
+        <referenceTo>Puppy_Location__c</referenceTo>
+        <relationshipLabel>Puppies</relationshipLabel>
+        <relationshipName>Puppy</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Puppy__c</fullName>
+        <externalId>false</externalId>
+        <label>Puppy</label>
+        <referenceTo>Puppy__c</referenceTo>
+        <relationshipLabel>Location</relationshipLabel>
+        <relationshipName>Location</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Reservation_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Reservation Key</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Puppy Reservation</label>
+    <listViews>
+        <fullName>Area1</fullName>
+        <booleanFilter>1</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Puppy_Location__c</columns>
+        <columns>Puppy__c</columns>
+        <columns>Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Puppy_Location__c</field>
+            <operation>equals</operation>
+            <value>Area 1</value>
+        </filters>
+        <label>Area1</label>
+    </listViews>
+    <nameField>
+        <displayFormat>R-{00000}</displayFormat>
+        <label>Puppy Reservation</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Puppy Reservations</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Puppy__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Puppy_Location__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Check_Puppy_is_Approved</fullName>
+        <active>true</active>
+        <description>Check if puppy registration has been</description>
+        <errorConditionFormula>TEXT(Puppy__r.Registration_Status__c) != &quot;Approved&quot;</errorConditionFormula>
+        <errorDisplayField>Puppy__c</errorDisplayField>
+        <errorMessage>Puppy need need to be approved before you can reserve  location</errorMessage>
+    </validationRules>
+</CustomObject>

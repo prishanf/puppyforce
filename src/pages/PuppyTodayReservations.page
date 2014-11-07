@@ -1,0 +1,37 @@
+<apex:page controller="TodayReservationsController" showHeader="false" sidebar="false">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css"></link>
+    <style>
+		.small{height:50px;width:50px}
+	</style>
+
+<div class="container">
+    <h2>
+        Puppy Dashboard 
+    </h2>
+	<div class="page-header">
+  	<apex:repeat value="{!LocationPuppyMap}" var="key">
+       <div class="panel panel-success">
+  		<div class="panel-heading">{!key}</div>
+  		<div class="panel-body">
+    	 
+           <div class="row">
+      		
+            <apex:repeat value="{!LocationPuppyMap[Key]}" var="puppy">
+             <div class="col-sm-2 col-md-2">   
+                <div class="thumbnail">
+                    <img src="{!puppy.Picture_Path__c}" alt="..." style="height: 150px; width: 150px; display: block;" />
+                      <div class="caption">
+                        <h4>{!puppy.Name}</h4>
+                      </div>
+                 </div>
+             </div>
+            </apex:repeat>
+            
+           </div>
+    	</div>
+		</div>
+    </apex:repeat>
+    </div>
+</div>
+
+</apex:page>

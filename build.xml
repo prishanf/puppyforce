@@ -1,0 +1,123 @@
+<project name="Billing Adjustment Project Source Download Ant tasks" default="download" basedir="." xmlns:sf="antlib:com.salesforce">
+    <property file="../build.properties"/>
+    <property environment="env"/>
+    <!-- Retrieve an unpackaged set of metadata from your org -->
+    <!-- The file sfdc-billing-adjustment/package.xml lists what is to be retrieved -->
+	<tstamp> 
+		<format property="TODAY" pattern="yyyy-MM-dd hh:mm aa" locale="en"/> 
+	</tstamp> 
+<!-- SFDC Download source 	 -->
+    <target name="download">
+      <mkdir dir="${sf.retrieveTarget}"/>
+	 <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="${sf.retrieveTarget}" unpackaged="${sf.packageFile}"/>
+	</target>
+<!-- Upload File to Traget SFDC Instance-->
+	<target name="migrate">
+      <mkdir dir="${sf.migrateFolder}"/>
+		<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="${sf.migrateFolder}" unpackaged="${sf.migrateFile}"/>
+		<sf:deploy username="${sft.username}" password="${sft.password}" serverurl="${sft.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.migrateFolder}"/>
+	</target>
+	
+	<target name="deploy">
+		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.migrateFolder}"/>
+	</target>
+	
+    <!-- Retrieve metadata for all the packages specified under packageNames -->
+    <target name="retrievePkg">
+	 <mkdir dir="${sf.retrieveTarget}"/>
+      <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="${sf.retrieveTarget}" packageNames="${sf.pkgName}" trace="false"/>
+    </target>
+	
+<!-- download code from SFDC and synch code to git repository -->		
+	<target name="downloadsynchtogit">
+		<antcall target="retrievePkg"/>
+		<antcall target="git-add"/>
+		<antcall target="git-commit"/>
+		<antcall target="git-push"/>
+	</target>
+<!-- synch code to git repository -->	
+	<target name="synchtogit">
+		<antcall target="git-add"/>
+		<antcall target="git-commit"/>
+		<antcall target="git-push"/>
+	</target>
+	
+	<target name="help">
+		<echo message="Below are the Available Ant Commands"/>
+		<echo message="download - Download the source files from SFDC"/>
+		<echo message="migrate - Upload File to Traget SFDC Instance"/>
+		<echo message="downloadsynchtogit - Download the source files from SFDC and Synch to git"/>
+		<echo message="synchtogit - Synch to git"/>
+	</target>
+	
+<!-- git-add -->
+	<target name="git-add">
+		<git command = "add">
+			<args>
+				<arg value = "." />
+			</args>
+		</git>
+	</target>
+<!-- git-commit	 -->
+	<target name="git-commit">
+		<git command = "commit">
+			<args>
+				<arg value = "-m" />
+				<arg value = "'Code Synch ${TODAY}'" />
+			</args>
+		</git>
+	</target>
+<!-- git-push -->
+	<target name="git-push">
+		<git command = "push">
+			<args>
+				<arg value = "origin" />
+				<arg value = "master" />
+			</args>
+		</git>
+	</target>
+<!-- git-status -->
+	<target name="git-status">
+		 <exec executable = "git">
+            <arg value = "status" />
+		</exec>	
+	</target>
+	
+<!-- Git Macro -->	
+	<macrodef name = "git">
+		<attribute name = "command" />
+		<attribute name = "dir" default = "" />
+		<element name = "args" optional = "true" />
+		<sequential>
+			<echo message = "git @{command}" />
+			<exec executable = "git" dir = "@{dir}">
+				<arg value = "@{command}" />
+				<args/>
+			</exec>
+		</sequential>
+	</macrodef>
+	
+	<target name="a">
+		<echo message="a"/>
+		<antcall target="b">
+			<param name="param1" value="After A"/>
+		</antcall>
+		<antcall target="c">
+					<param name="param2" value="After A"/>
+		</antcall>		
+	</target>
+	
+	<target name="b">
+		<echo message="b ${param1}"/>
+		<antcall target="c">
+					<param name="param2" value="After B"/>
+		</antcall>			
+	</target>
+	
+	<target name="c">
+		<echo message="c ${param2}"/> 
+	</target>
+	
+
+	
+</project>
