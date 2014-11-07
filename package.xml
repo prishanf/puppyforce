@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <types>
+    <fullName>PuppyForce</fullName>
+  <!-- CustomApplication -->
+	<types>
+        <members>PuppyForce</members>
+        <name>CustomApplication</name>
+    </types>
+	
+   <types>
         <members>TodayReservationsController</members>
         <name>ApexClass</name>
     </types>
@@ -12,10 +19,6 @@
         <members>PuppyPictureAttchTrigger</members>
         <members>PuppyReservarionTrigger</members>
         <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>PuppyForce</members>
-        <name>CustomApplication</name>
     </types>
     <types>
         <members>Puppy_Location__c.Capacity__c</members>

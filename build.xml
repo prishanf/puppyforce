@@ -14,12 +14,12 @@
 <!-- Upload File to Traget SFDC Instance-->
 	<target name="migrate">
       <mkdir dir="${sf.migrateFolder}"/>
-		<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="${sf.migrateFolder}" unpackaged="${sf.migrateFile}"/>
-		<sf:deploy username="${sft.username}" password="${sft.password}" serverurl="${sft.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.migrateFolder}"/>
+		<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="${sf.retrieveTarget}" packageNames="${sf.pkgName}" trace="false"/>
+		<sf:deploy username="${sft.username}" password="${sft.password}" serverurl="${sft.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.retrieveTarget}"/>
 	</target>
 	
 	<target name="deploy">
-		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.migrateFolder}"/>
+		<sf:deploy username="${sft.username}" password="${sft.password}" serverurl="${sft.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.retrieveTarget}"/>
 	</target>
 	
     <!-- Retrieve metadata for all the packages specified under packageNames -->

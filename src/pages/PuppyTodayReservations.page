@@ -8,6 +8,7 @@
     <h2>
         Puppy Dashboard 
     </h2>
+	<hr/>
 	<div class="page-header">
   	<apex:repeat value="{!LocationPuppyMap}" var="key">
        <div class="panel panel-success">
