@@ -24,12 +24,12 @@ Object Design
   * Registration Status (Pickuplist Draft,Pending, Approved)
   * Status (Formula - Based on the Registration Status display picture for the statses )
    * Formula
- ```   CASE( Registration_Status__c ,
+      `CASE( Registration_Status__c ,
        'Approved',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I3l','Approved',150,150),
        'Pending',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I3q','Pending',150,150),
        'Draft',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I83','Draft',150,150),''
       )
- ```
+      `
   * Picture Path ( String 255 - hidden) Default :'/servlet/servlet.FileDownload?file=015j00000005HzO'
   * Picture (Formula  -Display Puppy Image - image(Picture_Path__c,'Name',150,150)
   * Puppy Age (Formula - calculate the age)
@@ -100,6 +100,6 @@ Trigger
             Trigger.new[0].Puppy_Location__c.addError('Maximum Capacity Exceeds');
         }
     }
-    ````
+    ```
 Approval Flow
   After registerting the puppy then user should be able to send it to approve by admin staff. Once Approved, Puppy should be able to reserver a spot for the given day. 
