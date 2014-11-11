@@ -25,12 +25,12 @@ Object Design
   * Status (Formula - Based on the Registration Status display picture for the statses )
    * Formula
       `CASE( Registration_Status__c ,
-       'Approved',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I3l','Approved',150,150),
-       'Pending',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I3q','Pending',150,150),
-       'Draft',IMAGE('/servlet/servlet.FileDownload?file=015j00000005I83','Draft',150,150),''
+       'Approved',IMAGE('/servlet/servlet.FileDownload?file=015j00000005PE8','Approved',150,150),
+       'Pending',IMAGE('/servlet/servlet.FileDownload?file=015j00000005PEA','Pending',150,150),
+       'Draft',IMAGE('/servlet/servlet.FileDownload?file=015j00000005PE9','Draft',150,150),''
       )
       `
-  * Picture Path ( String 255 - hidden) Default :'/servlet/servlet.FileDownload?file=015j00000005HzO'
+  * Picture Path ( String 255 - hidden) Default :'/servlet/servlet.FileDownload?file=015j00000005PEB'
   * Picture (Formula  -Display Puppy Image - image(Picture_Path__c,'Name',150,150)
   * Puppy Age (Formula - calculate the age)
   * Address (Formula - show the full Puppy owner Address)
