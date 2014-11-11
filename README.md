@@ -63,9 +63,10 @@ Validation Rules
    Condition Formula :`TEXT(Puppy__r.Registration_Status__c) != "Approved" ` 
 
 Trigger
-  ####PuppyPictureAttachTrigger : ( Object" Attachment)###
-    * Update the Puppy image Picture Path when picture is attached via attachement
-    ```
+=======
+  *PuppyPictureAttachTrigger ( Object: Attachment)*
+   * Update the Puppy image Picture Path when picture is attached via attachement
+  ```
     trigger PuppyPictureAttachTrigger on Attachment (after insert,after update) {
     
     Map<id,id> objectIdAttechmentIdMap = new Map<Id,Id>();
@@ -79,11 +80,11 @@ Trigger
         puppiesToUpdate.add(puppy);
     }
     update puppiesToUpdate;
-    
-    ```
-    ####PuppyReservarionTrigger####
-    * Check Location capsacity before regsittering the puppy to the location.  
-    ```
+  ```
+  
+  *PuppyReservarionTrigger (Object Puppy_Reservation)* 
+   * Check Location capsacity before regsittering the puppy to the location.  
+  ```
     trigger PuppyReservarionTrigger on Puppy_Reservation__c (after insert) {
 
     List<AggregateResult> results = [Select Puppy_Location__c, Date__c, count(Puppy__c) Num from Puppy_Reservation__c group by Puppy_Location__c, Date__c];
@@ -100,6 +101,7 @@ Trigger
             Trigger.new[0].Puppy_Location__c.addError('Maximum Capacity Exceeds');
         }
     }
-    ```
+  ```
 Approval Flow
+=============
   After registerting the puppy then user should be able to send it to approve by admin staff. Once Approved, Puppy should be able to reserver a spot for the given day. 
