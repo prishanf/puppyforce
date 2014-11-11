@@ -56,7 +56,7 @@ Object Design
   
 Validation Rules
 ================
- ####Puppy Reservation####  
+ *Puppy Reservation* 
   * Check if the puppy has been approved to make the reservation
    Name: Check_Puppy_is_Approved
    Error Location : Puppy , Error Message : Puppy need need to be approved before you can reserve location
@@ -64,7 +64,7 @@ Validation Rules
 
 Trigger
 =======
-  *PuppyPictureAttachTrigger ( Object: Attachment)*
+  *PuppyPictureAttachTrigger (Object: Attachment)*
    * Update the Puppy image Picture Path when picture is attached via attachement
   ```
     trigger PuppyPictureAttachTrigger on Attachment (after insert,after update) {
@@ -82,7 +82,7 @@ Trigger
     update puppiesToUpdate;
   ```
   
-  *PuppyReservarionTrigger (Object Puppy_Reservation)* 
+  *PuppyReservarionTrigger (Object: Puppy Reservation)* 
    * Check Location capsacity before regsittering the puppy to the location.  
   ```
     trigger PuppyReservarionTrigger on Puppy_Reservation__c (after insert) {
