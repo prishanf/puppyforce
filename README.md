@@ -32,7 +32,7 @@ Object Design
       `
   * Picture Path ( String 255 - hidden) Default :'/servlet/servlet.FileDownload?file=015j00000005PEB'
   * Picture (Formula  -Display Puppy Image - image(Picture_Path__c,'Name',150,150)
-  * Puppy Age (Formula - calculate the age)
+  * Puppy Age (Formula - calculate the age) ` Text(ROUND((Today() -  Date_of_Birth__c)/365.2425,0)) + ' Years' `
   * Address (Formula - show the full Puppy owner Address)
   * Phone (Formula - Show Phome NUmber
   * Email (Formula - Email)
