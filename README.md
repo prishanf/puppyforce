@@ -3,13 +3,13 @@ PuppyForce
 
 Force.com PuppyForce Application.
 
-Employees would like to bring in their dog to work, So this is smaple application that helps manage it. 
+Employees would like to bring in their dogs to work, So this is a smaple application that helps manage it. 
 
 Requirments
 ===========
 * Ability to Regsiter Dog/Puppy
 * Managment of Desingnatred dog areas.
-* Abiility to reserver a spot a puupy for a selected date.
+* Abiility to reserver a spot for a puupy for a selected date.
  
 
 Object Design
@@ -18,7 +18,7 @@ Object Design
 *Puppy*
   * Name (String 30)
   * Gender (Picklist  Male, Female)
-  * Dat of Birth (Date)
+  * Date of Birth (Date)
   * Color (Text 20)
   * Puppy Owner ( Lookup-> User )
   * Registration Status (Pickuplist Draft,Pending, Approved)
